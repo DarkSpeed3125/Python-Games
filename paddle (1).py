@@ -50,11 +50,12 @@ class ComputerPaddle(pygame.sprite.Sprite):
         self.velocity = 8
         self.score=0
     
-    def update(self):
+    def update(self, event):
         #write the code for the computer paddle movement
-        if self.rect.y > ball.rect.y:
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_w]:
             self.rect.y = self.rect.y - self.velocity
-        if self.rect.y < ball.rect.y:
+        if keys[pygame.K_d]:
             self.rect.y = self.rect.y + self.velocity
 
 
@@ -99,7 +100,7 @@ while running:
     
     # Update objects
     player_paddle.update(event)
-    computer_paddle.update()
+    computer_paddle.update(event)
     ball.update()
 
 
